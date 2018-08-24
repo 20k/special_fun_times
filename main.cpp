@@ -28,8 +28,6 @@ int main()
     lg::set_logfile("./out.txt");
     lg::redirect_to_stdout();
 
-    vec2i window_size = {1500, 1000};
-
     sf::Context sf_ctx;
 
     cl::context ctx;
@@ -46,14 +44,14 @@ int main()
     cl::buffer* b_dataset = buffer_manage.fetch<cl::buffer>(ctx, nullptr);
     cl::buffer* distance_out = buffer_manage.fetch<cl::buffer>(ctx, nullptr);
 
+    cl::kernel kernel(program, "csk");
+
     int rows = 2000;
     int columns = 5000;
 
     auto data = GenerateDoubleDataSet(rows, columns);
 
     sf::Clock clk;
-
-    //b_dataset->alloc(cqueue, data);
 
     b_dataset->alloc_bytes(data.size() * sizeof(data[0]));
     distance_out->alloc_bytes(rows * rows * sizeof(type_t));
@@ -67,7 +65,7 @@ int main()
     arg_pack.push_back(columns);
 
     cl::event evt;
-    cqueue.exec("csk", arg_pack, {rows * rows}, {256}, &evt, {&write_package});
+    cqueue.exec(kernel, arg_pack, {rows * rows}, {256}, &evt, {&write_package});
 
     cl::read_event<type_t> read_package = distance_out->async_read<type_t>(cqueue, (vec2i){0, 0}, (vec2i){rows * rows, 0}, false, {&evt});
 

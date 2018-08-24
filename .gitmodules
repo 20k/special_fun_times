@@ -1,0 +1,3 @@
+[submodule "deps/funopenclwrapper"]
+	path = deps/funopenclwrapper
+	url = https://github.com/20k/funopenclwrapper

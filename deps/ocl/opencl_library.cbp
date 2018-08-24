@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="opencl_library" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/opencl_library" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/opencl_library" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+		</Compiler>
+		<Linker>
+			<Add option="-lmingw32" />
+			<Add option="-limgui" />
+			<Add option="-lsfml-graphics" />
+			<Add option="-lsfml-audio" />
+			<Add option="-lsfml-network" />
+			<Add option="-lsfml-window" />
+			<Add option="-lsfml-system" />
+			<Add option="-lfreetype" />
+			<Add option="-lopengl32" />
+			<Add option="-lws2_32" />
+			<Add option="-lflac" />
+			<Add option="-lopenal32" />
+			<Add option="-logg" />
+			<Add option="-lopencl" />
+		</Linker>
+		<Unit filename="logging.cpp" />
+		<Unit filename="logging.hpp" />
+		<Unit filename="main.cpp" />
+		<Unit filename="ocl.cpp" />
+		<Unit filename="ocl.hpp" />
+		<Unit filename="test_cl.cl" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
